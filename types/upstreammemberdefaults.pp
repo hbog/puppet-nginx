@@ -1,3 +1,4 @@
+# @summary Type Alias for Nginx::UpstreamMemberDefaults
 type Nginx::UpstreamMemberDefaults = Struct[{
   server         => Optional[Nginx::UpstreamMemberServer],
   port           => Optional[Stdlib::Port],
