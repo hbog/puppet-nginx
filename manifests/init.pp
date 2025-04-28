@@ -14,7 +14,11 @@
 #
 # @param passenger_package_name
 #   The name of the package to install in order for the passenger module of
-#   nginx being usable.
+#   nginx to be usable.
+#
+# @param mail_package_name
+#   The name of the package to install in order for the mail module of
+#   nginx to be usable.
 #
 # @param nginx_version
 #   The version of nginx installed (or being installed).
@@ -220,7 +224,7 @@ class nginx (
   Optional[Enum['on', 'off']] $daemon                        = undef,
   String[1] $daemon_user                                     = $nginx::params::daemon_user,
   Optional[String[1]] $daemon_group                          = undef,
-  Array[String] $dynamic_modules                             = [],
+  Array[String] $dynamic_modules                             = $nginx::params::dynamic_modules,
   String[1] $global_owner                                    = 'root',
   String[1] $global_group                                    = $nginx::params::global_group,
   Stdlib::Filemode $global_mode                              = '0644',
@@ -375,6 +379,8 @@ class nginx (
   Optional[String] $repo_release                             = undef,
   String $passenger_package_ensure                           = installed,
   String[1] $passenger_package_name                          = $nginx::params::passenger_package_name,
+  # This is optional, to allow it to be set to undef for systems that install it with nginx always
+  Optional[String[1]] $mail_package_name                     = $nginx::params::mail_package_name,
   Optional[Stdlib::HTTPUrl] $repo_source                     = undef,
   ### END Package Configuration ###
 

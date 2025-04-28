@@ -188,6 +188,11 @@ define nginx::resource::mailhost (
   if ! defined(Class['nginx']) {
     fail('You must include the nginx base class before using any defined resources')
   }
+  if $nginx::mail_package_name {
+    package { $nginx::mail_package_name:
+      ensure => 'installed',
+    }
+  }
 
   # Add IPv6 Logic Check - Nginx service will not start if ipv6 is enabled
   # and support does not exist for it in the kernel.

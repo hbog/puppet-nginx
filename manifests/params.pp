@@ -14,8 +14,10 @@ class nginx::params {
     'log_mode'                => '0750',
     'package_name'            => 'nginx',
     'passenger_package_name'  => 'passenger',
+    'mail_package_name'       => undef,
     'manage_repo'             => false,
     'include_modules_enabled' => false,
+    'dynamic_modules'         => [],
     'mime_types'              => {
       'text/html'                                                                 => 'html htm shtml',
       'text/css'                                                                  => 'css',
@@ -104,11 +106,12 @@ class nginx::params {
   case $facts['os']['family'] {
     'ArchLinux': {
       $_module_os_overrides = {
-        'pid'          => false,
-        'daemon_user'  => 'http',
-        'log_user'     => 'http',
-        'log_group'    => 'log',
-        'package_name' => 'nginx-mainline',
+        'pid'               => false,
+        'daemon_user'       => 'http',
+        'log_user'          => 'http',
+        'log_group'         => 'log',
+        'package_name'      => 'nginx-mainline',
+        'mail_package_name' => 'nginx-mod-mail',
       }
     }
     'Debian': {
@@ -144,7 +147,9 @@ class nginx::params {
         }
       } else {
         $_module_os_overrides = {
-          'log_group' => 'nginx',
+          'log_group'         => 'nginx',
+          'mail_package_name' => 'nginx-mod-mail',
+          'dynamic_modules'   => ['/usr/lib64/nginx/modules/ngx_mail_module.so'],
         }
       }
     }
@@ -204,6 +209,7 @@ class nginx::params {
   $log_mode                = $_module_parameters['log_mode']
   $pid                     = $_module_parameters['pid']
   $include_modules_enabled = $_module_parameters['include_modules_enabled']
+  $dynamic_modules         = $_module_parameters['dynamic_modules']
 
   $daemon_user             = $_module_parameters['daemon_user']
   $global_group            = $_module_parameters['root_group']
@@ -212,6 +218,7 @@ class nginx::params {
   $root_group              = $_module_parameters['root_group']
   $package_name            = $_module_parameters['package_name']
   $passenger_package_name  = $_module_parameters['passenger_package_name']
+  $mail_package_name       = $_module_parameters['mail_package_name']
   $sites_available_group   = $_module_parameters['root_group']
   ### END Referenced Variables
 }
