@@ -33,26 +33,26 @@
 
 ### Data types
 
-* [`Nginx::DebugConnection`](#Nginx--DebugConnection)
-* [`Nginx::ErrorLogSeverity`](#Nginx--ErrorLogSeverity)
+* [`Nginx::DebugConnection`](#Nginx--DebugConnection): Type Alias for Nginx::DebugConnection
+* [`Nginx::ErrorLogSeverity`](#Nginx--ErrorLogSeverity): Type Alias for Nginx::ErrorLogSeverity
 * [`Nginx::GzipProxied`](#Nginx--GzipProxied): custom type for gzip_proxied
-* [`Nginx::LogFormat`](#Nginx--LogFormat)
+* [`Nginx::LogFormat`](#Nginx--LogFormat): Type Alias for Nginx::LogFormat
 * [`Nginx::Package_source`](#Nginx--Package_source): Where to download NGINX from  There are three versions of NGINX available: * stable (`nginx` or `nginx-stable`); * mainline (`nginx-mainline`
-* [`Nginx::Size`](#Nginx--Size)
+* [`Nginx::Size`](#Nginx--Size): Type Alias for Nginx::Size
 * [`Nginx::StringMappings`](#Nginx--StringMappings): custom type for the `map` variable mapping
-* [`Nginx::Time`](#Nginx--Time)
-* [`Nginx::UpstreamCustomParameters`](#Nginx--UpstreamCustomParameters)
-* [`Nginx::UpstreamDefaults`](#Nginx--UpstreamDefaults)
-* [`Nginx::UpstreamLeastTime`](#Nginx--UpstreamLeastTime)
-* [`Nginx::UpstreamLeastTimeHttp`](#Nginx--UpstreamLeastTimeHttp)
-* [`Nginx::UpstreamLeastTimeStream`](#Nginx--UpstreamLeastTimeStream)
-* [`Nginx::UpstreamMember`](#Nginx--UpstreamMember)
-* [`Nginx::UpstreamMemberDefaults`](#Nginx--UpstreamMemberDefaults)
-* [`Nginx::UpstreamMemberServer`](#Nginx--UpstreamMemberServer)
-* [`Nginx::UpstreamMembers`](#Nginx--UpstreamMembers)
-* [`Nginx::UpstreamSticky`](#Nginx--UpstreamSticky)
-* [`Nginx::UpstreamStickyZone`](#Nginx--UpstreamStickyZone)
-* [`Nginx::UpstreamZone`](#Nginx--UpstreamZone)
+* [`Nginx::Time`](#Nginx--Time): Type Alias for Nginx::Time
+* [`Nginx::UpstreamCustomParameters`](#Nginx--UpstreamCustomParameters): Type Alias for Nginx::UpstreamCustomParameters
+* [`Nginx::UpstreamDefaults`](#Nginx--UpstreamDefaults): Type Alias for Nginx::UpstreamDefaults
+* [`Nginx::UpstreamLeastTime`](#Nginx--UpstreamLeastTime): Type Alias for Nginx::UpstreamLeastTime
+* [`Nginx::UpstreamLeastTimeHttp`](#Nginx--UpstreamLeastTimeHttp): Type Alias for Nginx::UpstreamLeastTimeHttp
+* [`Nginx::UpstreamLeastTimeStream`](#Nginx--UpstreamLeastTimeStream): Type Alias for Nginx::UpstreamLeastTimeStream
+* [`Nginx::UpstreamMember`](#Nginx--UpstreamMember): Type Alias for Nginx::UpstreamMember
+* [`Nginx::UpstreamMemberDefaults`](#Nginx--UpstreamMemberDefaults): Type Alias for Nginx::UpstreamMemberDefaults
+* [`Nginx::UpstreamMemberServer`](#Nginx--UpstreamMemberServer): Type Alias for Nginx::UpstreamMemberServer
+* [`Nginx::UpstreamMembers`](#Nginx--UpstreamMembers): Type Alias for Nginx::UpstreamMembers
+* [`Nginx::UpstreamSticky`](#Nginx--UpstreamSticky): Type Alias for Nginx::UpstreamSticky
+* [`Nginx::UpstreamStickyZone`](#Nginx--UpstreamStickyZone): Type Alias for Nginx::UpstreamStickyZone
+* [`Nginx::UpstreamZone`](#Nginx--UpstreamZone): Type Alias for Nginx::UpstreamZone
 
 ## Classes
 
@@ -5164,13 +5164,13 @@ Default value: `undef`
 
 ### <a name="Nginx--DebugConnection"></a>`Nginx::DebugConnection`
 
-The Nginx::DebugConnection data type.
+Type Alias for Nginx::DebugConnection
 
 Alias of `Variant[Stdlib::Host, Stdlib::IP::Address, Enum['unix:']]`
 
 ### <a name="Nginx--ErrorLogSeverity"></a>`Nginx::ErrorLogSeverity`
 
-The Nginx::ErrorLogSeverity data type.
+Type Alias for Nginx::ErrorLogSeverity
 
 Alias of `Enum['debug', 'info', 'notice', 'warn', 'error', 'crit', 'alert', 'emerg']`
 
@@ -5185,7 +5185,7 @@ Alias of `Enum['off', 'expired', 'no-cache', 'no-store', 'private', 'no_last_mod
 
 ### <a name="Nginx--LogFormat"></a>`Nginx::LogFormat`
 
-The Nginx::LogFormat data type.
+Type Alias for Nginx::LogFormat
 
 Alias of
 
@@ -5215,7 +5215,7 @@ Alias of `Enum['nginx', 'nginx-stable', 'nginx-mainline', 'passenger']`
 
 ### <a name="Nginx--Size"></a>`Nginx::Size`
 
-The Nginx::Size data type.
+Type Alias for Nginx::Size
 
 Alias of `Variant[Integer[0], Pattern[/\A\d+[k|K|m|M]?\z/]]`
 
@@ -5230,13 +5230,13 @@ Alias of `Variant[Array[Struct[{ 'key' => String[1], 'value' => String }]], Hash
 
 ### <a name="Nginx--Time"></a>`Nginx::Time`
 
-The Nginx::Time data type.
+Type Alias for Nginx::Time
 
 Alias of `Variant[Integer[0], Pattern[/^(?!$)((\d+y *)?(\d+M *)?(\d+w *)?(\d+d *)?(\d+h *)?(\d+m *)?(\d+s *)?(\d+ms)?|\d+)$/]]`
 
 ### <a name="Nginx--UpstreamCustomParameters"></a>`Nginx::UpstreamCustomParameters`
 
-The Nginx::UpstreamCustomParameters data type.
+Type Alias for Nginx::UpstreamCustomParameters
 
 Alias of
 
@@ -5267,7 +5267,7 @@ Hash[String[1], Variant[
 
 ### <a name="Nginx--UpstreamDefaults"></a>`Nginx::UpstreamDefaults`
 
-The Nginx::UpstreamDefaults data type.
+Type Alias for Nginx::UpstreamDefaults
 
 Alias of
 
@@ -5296,25 +5296,25 @@ Struct[{
 
 ### <a name="Nginx--UpstreamLeastTime"></a>`Nginx::UpstreamLeastTime`
 
-The Nginx::UpstreamLeastTime data type.
+Type Alias for Nginx::UpstreamLeastTime
 
 Alias of `Variant[Nginx::UpstreamLeastTimeHttp, Nginx::UpstreamLeastTimeStream]`
 
 ### <a name="Nginx--UpstreamLeastTimeHttp"></a>`Nginx::UpstreamLeastTimeHttp`
 
-The Nginx::UpstreamLeastTimeHttp data type.
+Type Alias for Nginx::UpstreamLeastTimeHttp
 
 Alias of `Enum['header', 'header inflight', 'last_byte', 'last_byte inflight']`
 
 ### <a name="Nginx--UpstreamLeastTimeStream"></a>`Nginx::UpstreamLeastTimeStream`
 
-The Nginx::UpstreamLeastTimeStream data type.
+Type Alias for Nginx::UpstreamLeastTimeStream
 
 Alias of `Enum['connect', 'connect inflight', 'first_byte', 'first_byte inflight', 'last_byte', 'last_byte inflight']`
 
 ### <a name="Nginx--UpstreamMember"></a>`Nginx::UpstreamMember`
 
-The Nginx::UpstreamMember data type.
+Type Alias for Nginx::UpstreamMember
 
 Alias of
 
@@ -5340,7 +5340,7 @@ Struct[{
 
 ### <a name="Nginx--UpstreamMemberDefaults"></a>`Nginx::UpstreamMemberDefaults`
 
-The Nginx::UpstreamMemberDefaults data type.
+Type Alias for Nginx::UpstreamMemberDefaults
 
 Alias of
 
@@ -5365,19 +5365,19 @@ Struct[{
 
 ### <a name="Nginx--UpstreamMemberServer"></a>`Nginx::UpstreamMemberServer`
 
-The Nginx::UpstreamMemberServer data type.
+Type Alias for Nginx::UpstreamMemberServer
 
 Alias of `Variant[Stdlib::Host, Pattern[/^unix:\/([^\/\0]+\/*)[^:]*$/]]`
 
 ### <a name="Nginx--UpstreamMembers"></a>`Nginx::UpstreamMembers`
 
-The Nginx::UpstreamMembers data type.
+Type Alias for Nginx::UpstreamMembers
 
 Alias of `Hash[String, Nginx::UpstreamMember]`
 
 ### <a name="Nginx--UpstreamSticky"></a>`Nginx::UpstreamSticky`
 
-The Nginx::UpstreamSticky data type.
+Type Alias for Nginx::UpstreamSticky
 
 Alias of
 
@@ -5410,13 +5410,13 @@ Variant[Hash[
 
 ### <a name="Nginx--UpstreamStickyZone"></a>`Nginx::UpstreamStickyZone`
 
-The Nginx::UpstreamStickyZone data type.
+Type Alias for Nginx::UpstreamStickyZone
 
 Alias of `Pattern[/^[-_\.A-Za-z0-9]*:\d+[k|K|m|M]$/]`
 
 ### <a name="Nginx--UpstreamZone"></a>`Nginx::UpstreamZone`
 
-The Nginx::UpstreamZone data type.
+Type Alias for Nginx::UpstreamZone
 
 Alias of `Pattern[/^[-_\.A-Za-z0-9]* \d+[k|K|m|M]$/]`
 

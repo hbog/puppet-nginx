@@ -1,3 +1,4 @@
+# @summary Type Alias for Nginx::UpstreamDefaults
 type Nginx::UpstreamDefaults = Struct[{
   context           => Optional[Enum['http', 'stream']],
   member_defaults   => Optional[Nginx::UpstreamMemberDefaults],

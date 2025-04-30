@@ -1,3 +1,4 @@
+# @summary Type Alias for Nginx::LogFormat
 type Nginx::LogFormat = Variant[
   String[1],
   Struct[{

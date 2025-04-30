@@ -1,3 +1,4 @@
+# @summary Type Alias for Nginx::UpstreamSticky
 type Nginx::UpstreamSticky = Variant[
   Hash[
     Enum['cookie'],
