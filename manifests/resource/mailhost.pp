@@ -194,6 +194,17 @@ define nginx::resource::mailhost (
     package { $nginx::mail_package_name:
       ensure => 'installed',
     }
+    $mail_load_content = $facts['os']['family'] ? {
+      'ArchLinux' => "load_module /usr/lib/nginx/modules/ngx_mail_module.so;\n",
+      'RedHat'    => "load_module /usr/lib64/nginx/modules/ngx_mail_module.so;\n",
+    }
+    file { '/etc/nginx/modules-enabled/mail.conf':
+      ensure  => 'file',
+      owner   => 'root',
+      mode    => '0644',
+      content => $mail_load_content,
+      require => File['/etc/nginx/modules-enabled'],
+    }
   }
 
   # Add IPv6 Logic Check - Nginx service will not start if ipv6 is enabled

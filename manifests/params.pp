@@ -17,7 +17,6 @@ class nginx::params {
     'mail_package_name'       => undef,
     'manage_repo'             => false,
     'include_modules_enabled' => false,
-    'dynamic_modules'         => [],
     'mime_types'              => {
       'text/html'                                                                 => 'html htm shtml',
       'text/css'                                                                  => 'css',
@@ -149,7 +148,6 @@ class nginx::params {
         $_module_os_overrides = {
           'log_group'         => 'nginx',
           'mail_package_name' => 'nginx-mod-mail',
-          'dynamic_modules'   => ['/usr/lib64/nginx/modules/ngx_mail_module.so'],
         }
       }
     }
@@ -209,7 +207,6 @@ class nginx::params {
   $log_mode                = $_module_parameters['log_mode']
   $pid                     = $_module_parameters['pid']
   $include_modules_enabled = $_module_parameters['include_modules_enabled']
-  $dynamic_modules         = $_module_parameters['dynamic_modules']
 
   $daemon_user             = $_module_parameters['daemon_user']
   $global_group            = $_module_parameters['root_group']

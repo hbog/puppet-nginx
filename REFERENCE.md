@@ -258,7 +258,8 @@ The following parameters are available in the `nginx` class:
 Data type: `Boolean`
 
 When set, nginx will include module configurations files installed in the
-/etc/nginx/modules-enabled directory.
+/etc/nginx/modules-enabled directory. This is also enabled if mail is
+being configured (to allow the module to be loaded).
 
 Default value: `$nginx::params::include_modules_enabled`
 
@@ -405,7 +406,7 @@ Data type: `Array[String]`
 
 
 
-Default value: `$nginx::params::dynamic_modules`
+Default value: `[]`
 
 ##### <a name="-nginx--global_owner"></a>`global_owner`
 

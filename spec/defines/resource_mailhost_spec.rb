@@ -16,7 +16,7 @@ describe 'nginx::resource::mailhost' do
           ipv6_enable: true
         }
       end
-      let(:pre_condition) { ['include nginx'] }
+      let(:pre_condition) { ['class { "nginx": mail => true }'] }
 
       describe 'os-independent items' do
         describe 'basic assumptions' do

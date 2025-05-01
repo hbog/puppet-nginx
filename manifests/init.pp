@@ -10,7 +10,8 @@
 #
 # @param include_modules_enabled
 #   When set, nginx will include module configurations files installed in the
-#   /etc/nginx/modules-enabled directory.
+#   /etc/nginx/modules-enabled directory. This is also enabled if mail is
+#   being configured (to allow the module to be loaded).
 #
 # @param passenger_package_name
 #   The name of the package to install in order for the passenger module of
@@ -224,7 +225,7 @@ class nginx (
   Optional[Enum['on', 'off']] $daemon                        = undef,
   String[1] $daemon_user                                     = $nginx::params::daemon_user,
   Optional[String[1]] $daemon_group                          = undef,
-  Array[String] $dynamic_modules                             = $nginx::params::dynamic_modules,
+  Array[String] $dynamic_modules                             = [],
   String[1] $global_owner                                    = 'root',
   String[1] $global_group                                    = $nginx::params::global_group,
   Stdlib::Filemode $global_mode                              = '0644',
