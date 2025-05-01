@@ -187,6 +187,8 @@ define nginx::resource::mailhost (
 ) {
   if ! defined(Class['nginx']) {
     fail('You must include the nginx base class before using any defined resources')
+  } elsif versioncmp($facts.get('nginx_version', $nginx::nginx_version), '1.15.0') < 0 {
+    fail('This module does not support nginx 1.14')
   }
   if $nginx::mail_package_name {
     package { $nginx::mail_package_name:

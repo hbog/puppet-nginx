@@ -111,7 +111,7 @@ class nginx::params {
         'log_user'          => 'http',
         'log_group'         => 'log',
         'package_name'      => 'nginx-mainline',
-        'mail_package_name' => 'nginx-mod-mail',
+        'mail_package_name' => 'nginx-mainline-mod-mail',
       }
     }
     'Debian': {
