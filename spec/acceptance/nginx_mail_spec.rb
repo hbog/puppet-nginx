@@ -3,9 +3,7 @@
 require 'spec_helper_acceptance'
 
 describe 'nginx::resource::mailhost define:' do
-  has_recent_mail_module = true
-
-  has_recent_mail_module = false if fact('os.family') == 'RedHat' && fact('os.release.major') == '8'
+  has_recent_mail_module = fact('os.family') != 'RedHat' || fact('os.release.major') != '8'
 
   it 'remove leftovers from previous tests', if: fact('os.family') == 'RedHat' do
     # nginx-mod-mail is not available for all versions of nginx, the one

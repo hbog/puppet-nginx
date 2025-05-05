@@ -189,7 +189,10 @@ define nginx::resource::mailhost (
     fail('You must include the nginx base class before using any defined resources')
   } elsif versioncmp($facts.get('nginx_version', $nginx::nginx_version), '1.15.0') < 0 {
     fail('This module does not support nginx 1.14')
+  } elsif ! $nginx::mail {
+    fail('nginx mail proxy requires the nginx::mail flag to be set true')
   }
+
   if $nginx::mail_package_name {
     package { $nginx::mail_package_name:
       ensure => 'installed',
