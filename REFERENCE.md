@@ -1960,6 +1960,10 @@ The following parameters are available in the `nginx::resource::location` define
 * [`add_header`](#-nginx--resource--location--add_header)
 * [`gzip_static`](#-nginx--resource--location--gzip_static)
 * [`reset_timedout_connection`](#-nginx--resource--location--reset_timedout_connection)
+* [`format_log`](#-nginx--resource--location--format_log)
+* [`access_log`](#-nginx--resource--location--access_log)
+* [`error_log`](#-nginx--resource--location--error_log)
+* [`log_not_found`](#-nginx--resource--location--log_not_found)
 * [`fastcgi_index`](#-nginx--resource--location--fastcgi_index)
 * [`rewrite_rules`](#-nginx--resource--location--rewrite_rules)
 
@@ -1983,7 +1987,7 @@ Default value: `false`
 
 ##### <a name="-nginx--resource--location--server"></a>`server`
 
-Data type: `Variant[String[1],Array[String[1],1]]`
+Data type: `Variant[String[1], Array[String[1], 1]]`
 
 Defines a server or list of servers that include this location
 
@@ -2523,7 +2527,7 @@ Default value: `undef`
 
 ##### <a name="-nginx--resource--location--priority"></a>`priority`
 
-Data type: `Integer[401,599]`
+Data type: `Integer[401, 599]`
 
 Location priority. User priority 401-499, 501-599. If the priority is
 higher than the default priority (500), the location will be defined after
@@ -2580,6 +2584,45 @@ Data type: `Optional[Enum['on', 'off']]`
 
 Enables or disables resetting timed out connections and connections closed
 with the non-standard code 444.
+
+Default value: `undef`
+
+##### <a name="-nginx--resource--location--format_log"></a>`format_log`
+
+Data type: `Optional[String[1]]`
+
+Log_format to use with the defined access_log
+
+Default value: `$nginx::http_format_log`
+
+##### <a name="-nginx--resource--location--access_log"></a>`access_log`
+
+Data type: `Optional[Variant[Array[String[1], 1], String[1]]]`
+
+Where to write access log (log format can be set with $format_log). This
+can be either a string or an array; in the latter case, multiple lines will
+be created. Additionally, unlike the earlier behavior, setting it to
+'absent' in the server context will remove this directive entirely from the
+server stanza, rather than setting a default. Can also be disabled for this
+server with the string 'off'.
+
+Default value: `undef`
+
+##### <a name="-nginx--resource--location--error_log"></a>`error_log`
+
+Data type: `Optional[Variant[Array[String[1], 1], String[1]]]`
+
+Where to write error log. May add additional options like error level to
+the end. May set to 'absent', in which case it will be omitted in this
+server stanza (and default to nginx.conf setting)
+
+Default value: `undef`
+
+##### <a name="-nginx--resource--location--log_not_found"></a>`log_not_found`
+
+Data type: `Optional[Enum['on', 'off']]`
+
+Enables or disables the logging of not found errors in error_log
 
 Default value: `undef`
 
@@ -5202,8 +5245,8 @@ Alias of
 
 ```puppet
 Variant[String[1], Struct[{
-    Optional[escape] => Enum['default', 'json', 'none'],
-    format           => String[1],
+      Optional[escape] => Enum['default', 'json', 'none'],
+      format           => String[1],
   }]]
 ```
 
@@ -5284,24 +5327,24 @@ Alias of
 
 ```puppet
 Struct[{
-  context           => Optional[Enum['http', 'stream']],
-  member_defaults   => Optional[Nginx::UpstreamMemberDefaults],
-  hash              => Optional[String],
-  ip_hash           => Optional[Boolean],
-  keepalive         => Optional[Integer[1]],
-  kepalive_requests => Optional[Integer[1]],
-  keepalive_timeout => Optional[Nginx::Time],
-  least_conn        => Optional[Boolean],
-  least_time        => Optional[Nginx::UpstreamLeastTime],
-  ntlm              => Optional[Boolean],
-  queue_max         => Optional[Integer],
-  queue_timeout     => Optional[Nginx::Time],
-  random            => Optional[String],
-  statefile         => Optional[Stdlib::Unixpath],
-  sticky            => Optional[Nginx::UpstreamSticky],
-  zone              => Optional[Nginx::UpstreamZone],
-  cfg_append        => Optional[Hash],
-  cfg_prepend       => Optional[Hash],
+    context           => Optional[Enum['http', 'stream']],
+    member_defaults   => Optional[Nginx::UpstreamMemberDefaults],
+    hash              => Optional[String],
+    ip_hash           => Optional[Boolean],
+    keepalive         => Optional[Integer[1]],
+    kepalive_requests => Optional[Integer[1]],
+    keepalive_timeout => Optional[Nginx::Time],
+    least_conn        => Optional[Boolean],
+    least_time        => Optional[Nginx::UpstreamLeastTime],
+    ntlm              => Optional[Boolean],
+    queue_max         => Optional[Integer],
+    queue_timeout     => Optional[Nginx::Time],
+    random            => Optional[String],
+    statefile         => Optional[Stdlib::Unixpath],
+    sticky            => Optional[Nginx::UpstreamSticky],
+    zone              => Optional[Nginx::UpstreamZone],
+    cfg_append        => Optional[Hash],
+    cfg_prepend       => Optional[Hash],
 }]
 ```
 
@@ -5331,21 +5374,21 @@ Alias of
 
 ```puppet
 Struct[{
-  server         => Optional[Nginx::UpstreamMemberServer],
-  port           => Optional[Stdlib::Port],
-  weight         => Optional[Integer[1]],
-  max_conns      => Optional[Integer[1]],
-  max_fails      => Optional[Integer[0]],
-  fail_timeout   => Optional[Nginx::Time],
-  backup         => Optional[Boolean],
-  resolve        => Optional[Boolean],
-  route          => Optional[String],
-  service        => Optional[String],
-  slow_start     => Optional[Nginx::Time],
-  state          => Optional[Enum['drain','down']],
-  params_prepend => Optional[String],
-  params_append  => Optional[String],
-  comment        => Optional[String],
+    server         => Optional[Nginx::UpstreamMemberServer],
+    port           => Optional[Stdlib::Port],
+    weight         => Optional[Integer[1]],
+    max_conns      => Optional[Integer[1]],
+    max_fails      => Optional[Integer[0]],
+    fail_timeout   => Optional[Nginx::Time],
+    backup         => Optional[Boolean],
+    resolve        => Optional[Boolean],
+    route          => Optional[String],
+    service        => Optional[String],
+    slow_start     => Optional[Nginx::Time],
+    state          => Optional[Enum['drain','down']],
+    params_prepend => Optional[String],
+    params_append  => Optional[String],
+    comment        => Optional[String],
 }]
 ```
 
@@ -5357,20 +5400,20 @@ Alias of
 
 ```puppet
 Struct[{
-  server         => Optional[Nginx::UpstreamMemberServer],
-  port           => Optional[Stdlib::Port],
-  weight         => Optional[Integer[1]],
-  max_conns      => Optional[Integer[1]],
-  max_fails      => Optional[Integer[0]],
-  fail_timeout   => Optional[Nginx::Time],
-  backup         => Optional[Boolean],
-  resolve        => Optional[Boolean],
-  route          => Optional[String],
-  service        => Optional[String],
-  slow_start     => Optional[Nginx::Time],
-  state          => Optional[Enum['drain','down']],
-  params_prepend => Optional[String],
-  params_append  => Optional[String],
+    server         => Optional[Nginx::UpstreamMemberServer],
+    port           => Optional[Stdlib::Port],
+    weight         => Optional[Integer[1]],
+    max_conns      => Optional[Integer[1]],
+    max_fails      => Optional[Integer[0]],
+    fail_timeout   => Optional[Nginx::Time],
+    backup         => Optional[Boolean],
+    resolve        => Optional[Boolean],
+    route          => Optional[String],
+    service        => Optional[String],
+    slow_start     => Optional[Nginx::Time],
+    state          => Optional[Enum['drain','down']],
+    params_prepend => Optional[String],
+    params_append  => Optional[String],
 }]
 ```
 
@@ -5396,12 +5439,12 @@ Alias of
 Variant[Hash[
     Enum['cookie'],
     Struct[{
-      name     => String,
-      expires  => Optional[Variant[Nginx::Time,Enum['max']]],
-      domain   => Optional[String],
-      httponly => Optional[Boolean],
-      secure   => Optional[Boolean],
-      path     => Optional[String],
+        name     => String,
+        expires  => Optional[Variant[Nginx::Time,Enum['max']]],
+        domain   => Optional[String],
+        httponly => Optional[Boolean],
+        secure   => Optional[Boolean],
+        path     => Optional[String],
     }]
   ], Hash[
     Enum['route'],
@@ -5409,12 +5452,12 @@ Variant[Hash[
   ], Hash[
     Enum['learn'],
     Struct[{
-      create  => String,
-      lookup  => String,
-      zone    => Nginx::UpstreamStickyZone,
-      timeout => Optional[Nginx::Time],
-      header  => Optional[Boolean],
-      sync    => Optional[Boolean],
+        create  => String,
+        lookup  => String,
+        zone    => Nginx::UpstreamStickyZone,
+        timeout => Optional[Nginx::Time],
+        header  => Optional[Boolean],
+        sync    => Optional[Boolean],
     }]
   ]]
 ```
