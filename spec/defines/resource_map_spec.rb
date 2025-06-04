@@ -136,7 +136,9 @@ describe 'nginx::resource::map' do
               it { is_expected.to contain_file("/etc/nginx/conf.d/#{title}-map.conf").with_mode('0644') }
 
               it param[:title] do
-                verify_contents(catalogue, "/etc/nginx/conf.d/#{title}-map.conf", Array(param[:match]))
+                Array(param[:match]).each do |match_item|
+                  is_expected.to contain_file("/etc/nginx/conf.d/#{title}-map.conf").with_content(Regexp.new(match_item))
+                end
                 Array(param[:notmatch]).each do |item|
                   is_expected.to contain_file("/etc/nginx/conf.d/#{title}-map.conf").without_content(item)
                 end

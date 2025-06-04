@@ -53,7 +53,7 @@ describe 'nginx::resource::geo' do
               title: 'should set address',
               attr: 'address',
               value: '$remote_addr',
-              match: 'geo $remote_addr $client_network {'
+              match: 'geo \$remote_addr \$client_network {'
             },
             {
               title: 'should set ranges',
@@ -109,7 +109,9 @@ describe 'nginx::resource::geo' do
               it { is_expected.to contain_file("/etc/nginx/conf.d/#{title}-geo.conf").with_mode('0644') }
 
               it param[:title] do
-                verify_contents(catalogue, "/etc/nginx/conf.d/#{title}-geo.conf", Array(param[:match]))
+                Array(param[:match]).each do |match_item|
+                  is_expected.to contain_file("/etc/nginx/conf.d/#{title}-geo.conf").with_content(Regexp.new(match_item))
+                end
                 Array(param[:notmatch]).each do |item|
                   is_expected.to contain_file("/etc/nginx/conf.d/#{title}-geo.conf").without_content(item)
                 end
