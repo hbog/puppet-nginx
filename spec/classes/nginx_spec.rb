@@ -16,6 +16,7 @@ describe 'nginx' do
           nginx_servers_defaults: { 'listen_options' => 'default_server' },
           nginx_locations: { 'test2.local' => { 'server' => 'test2.local', 'www_root' => '/' } },
           nginx_locations_defaults: { 'expires' => '@12h34m' },
+          mail: true,
           nginx_mailhosts: { 'smtp.test2.local' => { 'auth_http' => 'server2.example/cgi-bin/auth', 'protocol' => 'smtp', 'listen_port' => 587 } },
           nginx_mailhosts_defaults: { 'listen_options' => 'default_server_smtp' },
           nginx_streamhosts: { 'streamhost1' => { 'proxy' => 'streamproxy' } }

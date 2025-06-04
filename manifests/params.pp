@@ -14,6 +14,7 @@ class nginx::params {
     'log_mode'                => '0750',
     'package_name'            => 'nginx',
     'passenger_package_name'  => 'passenger',
+    'mail_package_name'       => undef,
     'manage_repo'             => false,
     'include_modules_enabled' => false,
     'mime_types'              => {
@@ -104,11 +105,12 @@ class nginx::params {
   case $facts['os']['family'] {
     'ArchLinux': {
       $_module_os_overrides = {
-        'pid'          => false,
-        'daemon_user'  => 'http',
-        'log_user'     => 'http',
-        'log_group'    => 'log',
-        'package_name' => 'nginx-mainline',
+        'pid'               => false,
+        'daemon_user'       => 'http',
+        'log_user'          => 'http',
+        'log_group'         => 'log',
+        'package_name'      => 'nginx-mainline',
+        'mail_package_name' => 'nginx-mainline-mod-mail',
       }
     }
     'Debian': {
@@ -144,7 +146,8 @@ class nginx::params {
         }
       } else {
         $_module_os_overrides = {
-          'log_group' => 'nginx',
+          'log_group'         => 'nginx',
+          'mail_package_name' => 'nginx-mod-mail',
         }
       }
     }
@@ -212,6 +215,7 @@ class nginx::params {
   $root_group              = $_module_parameters['root_group']
   $package_name            = $_module_parameters['package_name']
   $passenger_package_name  = $_module_parameters['passenger_package_name']
+  $mail_package_name       = $_module_parameters['mail_package_name']
   $sites_available_group   = $_module_parameters['root_group']
   ### END Referenced Variables
 }

@@ -77,6 +77,7 @@ The following parameters are available in the `nginx` class:
 
 * [`include_modules_enabled`](#-nginx--include_modules_enabled)
 * [`passenger_package_name`](#-nginx--passenger_package_name)
+* [`mail_package_name`](#-nginx--mail_package_name)
 * [`nginx_version`](#-nginx--nginx_version)
 * [`debug_connections`](#-nginx--debug_connections)
 * [`service_config_check`](#-nginx--service_config_check)
@@ -257,7 +258,8 @@ The following parameters are available in the `nginx` class:
 Data type: `Boolean`
 
 When set, nginx will include module configurations files installed in the
-/etc/nginx/modules-enabled directory.
+/etc/nginx/modules-enabled directory. This is also enabled if mail is
+being configured (to allow the module to be loaded).
 
 Default value: `$nginx::params::include_modules_enabled`
 
@@ -266,9 +268,18 @@ Default value: `$nginx::params::include_modules_enabled`
 Data type: `String[1]`
 
 The name of the package to install in order for the passenger module of
-nginx being usable.
+nginx to be usable.
 
 Default value: `$nginx::params::passenger_package_name`
+
+##### <a name="-nginx--mail_package_name"></a>`mail_package_name`
+
+Data type: `Optional[String[1]]`
+
+The name of the package to install in order for the mail module of
+nginx to be usable.
+
+Default value: `$nginx::params::mail_package_name`
 
 ##### <a name="-nginx--nginx_version"></a>`nginx_version`
 

@@ -10,11 +10,16 @@
 #
 # @param include_modules_enabled
 #   When set, nginx will include module configurations files installed in the
-#   /etc/nginx/modules-enabled directory.
+#   /etc/nginx/modules-enabled directory. This is also enabled if mail is
+#   being configured (to allow the module to be loaded).
 #
 # @param passenger_package_name
 #   The name of the package to install in order for the passenger module of
-#   nginx being usable.
+#   nginx to be usable.
+#
+# @param mail_package_name
+#   The name of the package to install in order for the mail module of
+#   nginx to be usable.
 #
 # @param nginx_version
 #   The version of nginx installed (or being installed).
@@ -375,6 +380,8 @@ class nginx (
   Optional[String] $repo_release                             = undef,
   String $passenger_package_ensure                           = installed,
   String[1] $passenger_package_name                          = $nginx::params::passenger_package_name,
+  # This is optional, to allow it to be set to undef for systems that install it with nginx always
+  Optional[String[1]] $mail_package_name                     = $nginx::params::mail_package_name,
   Optional[Stdlib::HTTPUrl] $repo_source                     = undef,
   ### END Package Configuration ###
 

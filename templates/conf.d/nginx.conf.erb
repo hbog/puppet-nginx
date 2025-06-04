@@ -6,6 +6,7 @@ load_module "<%= mod_item -%>";
 load_module "modules/<%= mod_item -%>.so";
   <%- end -%>
 <%- end -%>
+
 <% if @daemon -%>
 daemon <%= @daemon %>;
 <% end -%>
@@ -23,7 +24,7 @@ pcre_jit <%= @pcre_jit %>;
 <% if @pid -%>
 pid        <%= @pid %>;
 <% end -%>
-<% if @include_modules_enabled -%>
+<% if @include_modules_enabled or @mail -%>
 include /etc/nginx/modules-enabled/*.conf;
 <% end -%>
 <% if @nginx_cfg_prepend -%>

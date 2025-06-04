@@ -16,7 +16,7 @@ describe 'nginx::resource::mailhost' do
           ipv6_enable: true
         }
       end
-      let(:pre_condition) { ['include nginx'] }
+      let(:pre_condition) { ['class { "nginx": mail => true }'] }
 
       describe 'os-independent items' do
         describe 'basic assumptions' do
@@ -243,7 +243,7 @@ describe 'nginx::resource::mailhost' do
             end
           end
           context 'mail proxy parameters' do
-            let(:pre_condition) { ['class { "nginx": nginx_version => "1.20.0"}'] }
+            let(:pre_condition) { ['class { "nginx": nginx_version => "1.20.0", mail => true,}'] }
             let(:params) do
               {
                 listen_port: 25,
@@ -689,7 +689,7 @@ describe 'nginx::resource::mailhost' do
                 facts.merge(nginx_version: '1.16.0')
               end
 
-              let(:pre_condition) { ['include nginx'] }
+              let(:pre_condition) { ['class { "nginx": mail => true,}'] }
 
               it 'has `ssl` at end of listen directive' do
                 content = catalogue.resource('concat::fragment', "#{title}-ssl").send(:parameters)[:content]
@@ -698,7 +698,7 @@ describe 'nginx::resource::mailhost' do
             end
 
             context 'when version comes from parameter' do
-              let(:pre_condition) { ['class { "nginx": nginx_version => "1.16.0"}'] }
+              let(:pre_condition) { ['class { "nginx": nginx_version => "1.16.0", mail => true,}'] }
 
               it 'also has `ssl` at end of listen directive' do
                 content = catalogue.resource('concat::fragment', "#{title}-ssl").send(:parameters)[:content]
@@ -707,7 +707,7 @@ describe 'nginx::resource::mailhost' do
             end
 
             context 'mail proxy parameters' do
-              let(:pre_condition) { ['class { "nginx": nginx_version => "1.20.0"}'] }
+              let(:pre_condition) { ['class { "nginx": nginx_version => "1.20.0", mail => true,}'] }
 
               it 'configures mail proxy settings' do
                 content = catalogue.resource('concat::fragment', "#{title}-ssl").send(:parameters)[:content]

@@ -187,6 +187,27 @@ define nginx::resource::mailhost (
 ) {
   if ! defined(Class['nginx']) {
     fail('You must include the nginx base class before using any defined resources')
+  } elsif versioncmp($facts.get('nginx_version', $nginx::nginx_version), '1.15.0') < 0 {
+    fail('The mail module requires nginx 1.15 or newer')
+  } elsif ! $nginx::mail {
+    fail('nginx mail proxy requires the nginx::mail flag to be set true')
+  }
+
+  if $nginx::mail_package_name {
+    package { $nginx::mail_package_name:
+      ensure => 'installed',
+    }
+    $mail_load_content = $facts['os']['family'] ? {
+      'ArchLinux' => "load_module /usr/lib/nginx/modules/ngx_mail_module.so;\n",
+      'RedHat'    => "load_module /usr/lib64/nginx/modules/ngx_mail_module.so;\n",
+    }
+    file { '/etc/nginx/modules-enabled/mail.conf':
+      ensure  => 'file',
+      owner   => 'root',
+      mode    => '0644',
+      content => $mail_load_content,
+      require => File['/etc/nginx/modules-enabled'],
+    }
   }
 
   # Add IPv6 Logic Check - Nginx service will not start if ipv6 is enabled

@@ -199,6 +199,12 @@ class nginx::config {
     }
   }
 
+  if ($include_modules_enabled or $nginx::mail) {
+    file { "${conf_dir}/modules-enabled":
+      ensure => directory,
+    }
+  }
+
   file { $log_dir:
     ensure  => directory,
     mode    => $log_mode,
