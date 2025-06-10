@@ -4,7 +4,22 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v6.0.1](https://github.com/voxpupuli/puppet-nginx/tree/v6.0.1) (2024-09-12)
+## [v7.0.0](https://github.com/voxpupuli/puppet-nginx/tree/v7.0.0) (2025-06-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-nginx/compare/v6.0.1...v7.0.0)
+
+**Breaking changes:**
+
+- Disable mail relay in nginx 1.14 [\#1634](https://github.com/voxpupuli/puppet-nginx/pull/1634) ([jstraw](https://github.com/jstraw))
+- Fix `apt-key` deprecated message [\#1610](https://github.com/voxpupuli/puppet-nginx/pull/1610) ([miluxhd](https://github.com/miluxhd))
+
+**Implemented enhancements:**
+
+- metadata.json: Add OpenVox [\#1631](https://github.com/voxpupuli/puppet-nginx/pull/1631) ([jstraw](https://github.com/jstraw))
+- Fix http\_raw\_prepend/append indentation [\#1608](https://github.com/voxpupuli/puppet-nginx/pull/1608) ([matejzero](https://github.com/matejzero))
+- add support to access\_log, error\_log log\_not\_found per location [\#1471](https://github.com/voxpupuli/puppet-nginx/pull/1471) ([ceonizm](https://github.com/ceonizm))
+
+## [v6.0.1](https://github.com/voxpupuli/puppet-nginx/tree/v6.0.1) (2024-09-13)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-nginx/compare/v6.0.0...v6.0.1)
 
