@@ -295,15 +295,15 @@ describe 'nginx::resource::location' do
               title: 'should set error_log',
               attr: 'error_log',
               value: '/path/to/error.log',
-              match: '  error_log             /path/to/error.log;'
+              match: '    error_log             /path/to/error.log;'
             },
             {
               title: 'should allow multiple error_log directives',
               attr: 'error_log',
               value: ['/path/to/error.log', 'syslog:server=localhost'],
               match: [
-                '  error_log             /path/to/error.log;',
-                '  error_log             syslog:server=localhost;'
+                '    error_log             /path/to/error.log;',
+                '    error_log             syslog:server=localhost;'
               ]
             },
             {
