@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v7.0.0](https://github.com/voxpupuli/puppet-nginx/tree/v7.0.0) (2025-06-04)
+## [v7.0.1](https://github.com/voxpupuli/puppet-nginx/tree/v7.0.1) (2025-06-12)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-nginx/compare/v7.0.0...v7.0.1)
+
+**Fixed bugs:**
+
+- Fix logging statements in locations [\#1638](https://github.com/voxpupuli/puppet-nginx/pull/1638) ([toggetit](https://github.com/toggetit))
+
+## [v7.0.0](https://github.com/voxpupuli/puppet-nginx/tree/v7.0.0) (2025-06-10)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-nginx/compare/v6.0.1...v7.0.0)
 
