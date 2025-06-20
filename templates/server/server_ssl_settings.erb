@@ -14,9 +14,18 @@
   ssl_certificate_key       <%= key %>;
 <% end -%>
 <% end -%>
-<% if defined? @ssl_client_cert -%>
+<% if scope.call_function('versioncmp', [scope['nginx::nginx_version'], '1.27.2']) >= 0 -%>
+<%   if defined? @ssl_client_cert -%>
+  ssl_client_certificate    <%= @ssl_client_cert %>;
+<%   end -%>
+<%   if ( defined? @ssl_verify_client ) && ( @ssl_client_cert.is_a?(String) || @ssl_trusted_cert.is_a?(String) ) -%>
+  ssl_verify_client         <%= @ssl_verify_client %>;
+<%   end -%>
+<% else -%>
+<%   if defined? @ssl_client_cert -%>
   ssl_client_certificate    <%= @ssl_client_cert %>;
   ssl_verify_client         <%= @ssl_verify_client %>;
+<%   end -%>
 <% end -%>
 <% if defined? @ssl_dhparam -%>
   ssl_dhparam               <%= @ssl_dhparam %>;
