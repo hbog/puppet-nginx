@@ -20,6 +20,8 @@
 <%   end -%>
 <%   if ( defined? @ssl_verify_client ) && ( @ssl_client_cert.is_a?(String) || @ssl_trusted_cert.is_a?(String) ) -%>
   ssl_verify_client         <%= @ssl_verify_client %>;
+<%   elsif ( not defined? @ssl_verify_client ) && ( @ssl_client_cert.is_a?(String) ) -%>
+  ssl_verify_client         on;
 <%   end -%>
 <% else -%>
 <%   if defined? @ssl_client_cert -%>
