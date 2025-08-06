@@ -264,7 +264,7 @@ define nginx::resource::location (
     'index.php',
   ],
   Optional[String] $proxy                                          = undef,
-  Optional[String] $proxy_redirect                                 = $nginx::proxy_redirect,
+  Optional[Variant[Array[String],String]] $proxy_redirect          = $nginx::proxy_redirect,
   String $proxy_read_timeout                                       = $nginx::proxy_read_timeout,
   String $proxy_connect_timeout                                    = $nginx::proxy_connect_timeout,
   String $proxy_send_timeout                                       = $nginx::proxy_send_timeout,

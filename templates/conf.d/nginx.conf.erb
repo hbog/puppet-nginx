@@ -184,8 +184,8 @@ http {
 <% if @client_body_buffer_size -%>
   client_body_buffer_size <%= @client_body_buffer_size %>;
 <% end -%>
-<% if @proxy_redirect -%>
-  proxy_redirect          <%= @proxy_redirect %>;
+<% Array(@proxy_redirect).each do |value| -%>
+  proxy_redirect          <%= value %>;
 <% end -%>
 <% if @_proxy_temp_path -%>
   proxy_temp_path         <%= @_proxy_temp_path.join(' ') %>;

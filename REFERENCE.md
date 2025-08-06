@@ -1130,7 +1130,7 @@ Default value: `'90s'`
 
 ##### <a name="-nginx--proxy_redirect"></a>`proxy_redirect`
 
-Data type: `Optional[String]`
+Data type: `Optional[Variant[Array[String],String]]`
 
 
 
@@ -2096,7 +2096,7 @@ Default value: `undef`
 
 ##### <a name="-nginx--resource--location--proxy_redirect"></a>`proxy_redirect`
 
-Data type: `Optional[String]`
+Data type: `Optional[Variant[Array[String],String]]`
 
 sets the text, which must be changed in response-header "Location" and
 "Refresh" in the response of the proxied server.
@@ -3622,7 +3622,7 @@ Default value: `$nginx::proxy_send_timeout`
 
 ##### <a name="-nginx--resource--server--proxy_redirect"></a>`proxy_redirect`
 
-Data type: `Optional[String]`
+Data type: `Optional[Variant[Array[String],String]]`
 
 Override the default proxy_redirect value of off.
 
