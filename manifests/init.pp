@@ -322,7 +322,7 @@ class nginx (
   Integer $proxy_headers_hash_bucket_size                    = 64,
   Optional[String] $proxy_http_version                       = undef,
   Nginx::Time $proxy_read_timeout                            = '90s',
-  Optional[String] $proxy_redirect                           = undef,
+  Optional[Variant[Array[String],String]] $proxy_redirect    = undef,
   Nginx::Time $proxy_send_timeout                            = '90s',
   Array $proxy_set_header                                    = [
     'Host $host',

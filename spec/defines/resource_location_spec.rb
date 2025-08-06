@@ -936,6 +936,15 @@ describe 'nginx::resource::location' do
               match: %r{^\s+proxy_redirect\s+value;}
             },
             {
+              title: 'should set proxy_redirect array',
+              attr: 'proxy_redirect',
+              value: %w[value1 value2],
+              match: [
+                %r{^\s+proxy_redirect\s+value1;},
+                %r{^\s+proxy_redirect\s+value2;},
+              ],
+            },
+            {
               title: 'should not set proxy_redirect',
               attr: 'proxy_redirect',
               value: :undef,

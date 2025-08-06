@@ -331,7 +331,7 @@ define nginx::resource::server (
   Enum['on', 'off'] $spdy                                                        = $nginx::spdy,
   Enum['on', 'off'] $http2                                                       = $nginx::http2,
   Optional[String] $proxy                                                        = undef,
-  Optional[String] $proxy_redirect                                               = undef,
+  Optional[Variant[Array[String],String]] $proxy_redirect                        = undef,
   String $proxy_read_timeout                                                     = $nginx::proxy_read_timeout,
   String $proxy_send_timeout                                                     = $nginx::proxy_send_timeout,
   $proxy_connect_timeout                                                         = $nginx::proxy_connect_timeout,
