@@ -92,7 +92,8 @@ define nginx::resource::upstream::member (
   concat::fragment { "${upstream}_upstream_member_${name}":
     target  => "${conf_dir}/${upstream}-upstream.conf",
     order   => 40,
-    content => epp('nginx/upstream/upstream_member.epp', {
+    content => epp('nginx/upstream/upstream_member.epp',
+      {
         server         => $_server,
         backup         => $backup,
         comment        => $comment,
@@ -107,6 +108,7 @@ define nginx::resource::upstream::member (
         slow_start     => $slow_start,
         state          => $state,
         weight         => $weight,
-    }),
+      },
+    ),
   }
 }

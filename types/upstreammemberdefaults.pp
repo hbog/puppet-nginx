@@ -1,5 +1,6 @@
 # @summary Type Alias for Nginx::UpstreamMemberDefaults
-type Nginx::UpstreamMemberDefaults = Struct[{
+type Nginx::UpstreamMemberDefaults = Struct[
+  {
     server         => Optional[Nginx::UpstreamMemberServer],
     port           => Optional[Stdlib::Port],
     weight         => Optional[Integer[1]],
@@ -14,4 +15,5 @@ type Nginx::UpstreamMemberDefaults = Struct[{
     state          => Optional[Enum['drain','down']],
     params_prepend => Optional[String],
     params_append  => Optional[String],
-}]
+  }
+]
