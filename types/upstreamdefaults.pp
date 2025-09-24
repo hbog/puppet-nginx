@@ -1,5 +1,6 @@
 # @summary Type Alias for Nginx::UpstreamDefaults
-type Nginx::UpstreamDefaults = Struct[{
+type Nginx::UpstreamDefaults = Struct[
+  {
     context           => Optional[Enum['http', 'stream']],
     member_defaults   => Optional[Nginx::UpstreamMemberDefaults],
     hash              => Optional[String],
@@ -18,4 +19,5 @@ type Nginx::UpstreamDefaults = Struct[{
     zone              => Optional[Nginx::UpstreamZone],
     cfg_append        => Optional[Hash],
     cfg_prepend       => Optional[Hash],
-}]
+  }
+]

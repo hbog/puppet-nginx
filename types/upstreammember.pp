@@ -1,5 +1,6 @@
 # @summary Type Alias for Nginx::UpstreamMember
-type Nginx::UpstreamMember = Struct[{
+type Nginx::UpstreamMember = Struct[
+  {
     server         => Optional[Nginx::UpstreamMemberServer],
     port           => Optional[Stdlib::Port],
     weight         => Optional[Integer[1]],
@@ -15,4 +16,5 @@ type Nginx::UpstreamMember = Struct[{
     params_prepend => Optional[String],
     params_append  => Optional[String],
     comment        => Optional[String],
-}]
+  }
+]

@@ -3085,11 +3085,13 @@ Default value: `[]`
 Data type:
 
 ```puppet
-Hash[String, Variant[
+Hash[String,
+    Variant[
       String,
       Array[String],
       Hash[String, Variant[String, Array[String]]],
-  ]]
+    ]
+  ]
 ```
 
 It expects a hash with custom directives to put after everything else
@@ -3102,11 +3104,13 @@ Default value: `{}`
 Data type:
 
 ```puppet
-Hash[String, Variant[
+Hash[String,
+    Variant[
       String,
       Array[String],
       Hash[String, Variant[String, Array[String]]],
-  ]]
+    ]
+  ]
 ```
 
 It expects a hash with custom directives to put before everything else
@@ -5244,10 +5248,12 @@ Type Alias for Nginx::LogFormat
 Alias of
 
 ```puppet
-Variant[String[1], Struct[{
+Variant[String[1], Struct[
+    {
       Optional[escape] => Enum['default', 'json', 'none'],
       format           => String[1],
-  }]]
+    }
+  ]]
 ```
 
 ### <a name="Nginx--Package_source"></a>`Nginx::Package_source`
@@ -5345,7 +5351,7 @@ Struct[{
     zone              => Optional[Nginx::UpstreamZone],
     cfg_append        => Optional[Hash],
     cfg_prepend       => Optional[Hash],
-}]
+  }]
 ```
 
 ### <a name="Nginx--UpstreamLeastTime"></a>`Nginx::UpstreamLeastTime`
@@ -5389,7 +5395,7 @@ Struct[{
     params_prepend => Optional[String],
     params_append  => Optional[String],
     comment        => Optional[String],
-}]
+  }]
 ```
 
 ### <a name="Nginx--UpstreamMemberDefaults"></a>`Nginx::UpstreamMemberDefaults`
@@ -5414,7 +5420,7 @@ Struct[{
     state          => Optional[Enum['drain','down']],
     params_prepend => Optional[String],
     params_append  => Optional[String],
-}]
+  }]
 ```
 
 ### <a name="Nginx--UpstreamMemberServer"></a>`Nginx::UpstreamMemberServer`
@@ -5438,27 +5444,31 @@ Alias of
 ```puppet
 Variant[Hash[
     Enum['cookie'],
-    Struct[{
+    Struct[
+      {
         name     => String,
         expires  => Optional[Variant[Nginx::Time,Enum['max']]],
         domain   => Optional[String],
         httponly => Optional[Boolean],
         secure   => Optional[Boolean],
         path     => Optional[String],
-    }]
+      }
+    ]
   ], Hash[
     Enum['route'],
     String
   ], Hash[
     Enum['learn'],
-    Struct[{
+    Struct[
+      {
         create  => String,
         lookup  => String,
         zone    => Nginx::UpstreamStickyZone,
         timeout => Optional[Nginx::Time],
         header  => Optional[Boolean],
         sync    => Optional[Boolean],
-    }]
+      }
+    ]
   ]]
 ```
 

@@ -93,14 +93,16 @@ define nginx::resource::map (
     owner   => 'root',
     group   => $root_group,
     mode    => $nginx::global_mode,
-    content => epp('nginx/conf.d/map.epp', {
+    content => epp('nginx/conf.d/map.epp',
+      {
         'default'       => $default,
         'hostnames'     => $hostnames,
         'include_files' => $include_files,
         'mappings'      => $mappings,
         'name'          => $name,
         'string'        => $string,
-    }),
+      },
+    ),
     notify  => Class['nginx::service'],
     tag     => 'nginx_config_file',
   }
