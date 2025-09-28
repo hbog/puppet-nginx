@@ -252,7 +252,7 @@ define nginx::resource::location (
   Enum['present', 'absent'] $ensure                                = 'present',
   Boolean $internal                                                = false,
   String $location                                                 = $name,
-  Variant[String[1], Array[String[1], 1]] $server                  = undef,
+  Optional[Variant[String[1], Array[String[1], 1]]] $server        = undef,
   Optional[String] $www_root                                       = undef,
   Optional[String] $autoindex                                      = undef,
   Optional[Enum['on', 'off']] $autoindex_exact_size                = undef,

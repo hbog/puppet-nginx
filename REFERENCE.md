@@ -1987,7 +1987,7 @@ Default value: `false`
 
 ##### <a name="-nginx--resource--location--server"></a>`server`
 
-Data type: `Variant[String[1], Array[String[1], 1]]`
+Data type: `Optional[Variant[String[1], Array[String[1], 1]]]`
 
 Defines a server or list of servers that include this location
 
