@@ -145,6 +145,7 @@
 # @param proxy_use_temp_path
 # @param proxy_connect_timeout
 # @param proxy_headers_hash_bucket_size
+# @param proxy_headers_hash_max_size
 # @param proxy_http_version
 # @param proxy_read_timeout
 # @param proxy_redirect
@@ -216,6 +217,8 @@
 # @param nginx_upstreams
 # @param nginx_upstreams_defaults
 # @param purge_passenger_repo
+# @param variables_hash_bucket_size
+# @param variables_hash_max_size
 class nginx (
   ### START Nginx Configuration ###
   Optional[Variant[Stdlib::Absolutepath, Tuple[Stdlib::Absolutepath, Integer, 1, 4]]] $client_body_temp_path      = undef,
@@ -320,6 +323,7 @@ class nginx (
   Optional[Enum['on', 'off']] $proxy_use_temp_path           = undef,
   Nginx::Time $proxy_connect_timeout                         = '90s',
   Integer $proxy_headers_hash_bucket_size                    = 64,
+  Optional[Integer] $proxy_headers_hash_max_size             = undef,
   Optional[String] $proxy_http_version                       = undef,
   Nginx::Time $proxy_read_timeout                            = '90s',
   Optional[Variant[Array[String],String]] $proxy_redirect    = undef,
@@ -397,24 +401,26 @@ class nginx (
   ### END Service Configuration ###
 
   ### START Hiera Lookups ###
-  Hash $geo_mappings                                      = {},
-  Hash $geo_mappings_defaults                             = {},
-  Hash $string_mappings                                   = {},
-  Hash $string_mappings_defaults                          = {},
-  Hash $nginx_snippets                                    = {},
-  Hash $nginx_snippets_defaults                           = {},
-  Hash $nginx_locations                                   = {},
-  Hash $nginx_locations_defaults                          = {},
-  Hash $nginx_mailhosts                                   = {},
-  Hash $nginx_mailhosts_defaults                          = {},
-  Hash $nginx_servers                                     = {},
-  Hash $nginx_servers_defaults                            = {},
-  Hash $nginx_streamhosts                                 = {},
-  Hash $nginx_streamhosts_defaults                        = {},
-  Hash $nginx_upstreams                                   = {},
-  Nginx::UpstreamDefaults $nginx_upstreams_defaults       = {},
-  Boolean $purge_passenger_repo                           = true,
-  String[1] $nginx_version                                = pick(fact('nginx_version'), '1.16.0'),
+  Hash $geo_mappings                                         = {},
+  Hash $geo_mappings_defaults                                = {},
+  Hash $string_mappings                                      = {},
+  Hash $string_mappings_defaults                             = {},
+  Hash $nginx_snippets                                       = {},
+  Hash $nginx_snippets_defaults                              = {},
+  Hash $nginx_locations                                      = {},
+  Hash $nginx_locations_defaults                             = {},
+  Hash $nginx_mailhosts                                      = {},
+  Hash $nginx_mailhosts_defaults                             = {},
+  Hash $nginx_servers                                        = {},
+  Hash $nginx_servers_defaults                               = {},
+  Hash $nginx_streamhosts                                    = {},
+  Hash $nginx_streamhosts_defaults                           = {},
+  Hash $nginx_upstreams                                      = {},
+  Nginx::UpstreamDefaults $nginx_upstreams_defaults          = {},
+  Boolean $purge_passenger_repo                              = true,
+  String[1] $nginx_version                                   = pick(fact('nginx_version'), '1.16.0'),
+  Optional[Integer] $variables_hash_bucket_size              = undef,
+  Optional[Integer] $variables_hash_max_size                 = undef,
 
   ### END Hiera Lookups ###
 ) inherits nginx::params {

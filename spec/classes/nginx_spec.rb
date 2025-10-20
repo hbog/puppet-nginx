@@ -1141,6 +1141,30 @@ describe 'nginx' do
                 attr: 'reset_timedout_connection',
                 value: 'on',
                 match: %r{^\s+reset_timedout_connection\s+on;}
+              },
+              {
+                title: 'should set variables_hash_bucket_size',
+                attr: 'variables_hash_bucket_size',
+                value: 64,
+                match: '  variables_hash_bucket_size 64;'
+              },
+              {
+                title: 'should set variables_hash_max_size',
+                attr: 'variables_hash_max_size',
+                value: 1024,
+                match: '  variables_hash_max_size 1024;'
+              },
+              {
+                title: 'should set proxy_headers_hash_bucket_size',
+                attr: 'proxy_headers_hash_bucket_size',
+                value: 64,
+                match: '  proxy_headers_hash_bucket_size 64;'
+              },
+              {
+                title: 'should set proxy_headers_hash_max_size',
+                attr: 'proxy_headers_hash_max_size',
+                value: 512,
+                match: '  proxy_headers_hash_max_size 512;'
               }
             ].each do |param|
               context "when #{param[:attr]} is #{param[:value]}" do

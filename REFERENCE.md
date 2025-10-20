@@ -181,6 +181,7 @@ The following parameters are available in the `nginx` class:
 * [`proxy_use_temp_path`](#-nginx--proxy_use_temp_path)
 * [`proxy_connect_timeout`](#-nginx--proxy_connect_timeout)
 * [`proxy_headers_hash_bucket_size`](#-nginx--proxy_headers_hash_bucket_size)
+* [`proxy_headers_hash_max_size`](#-nginx--proxy_headers_hash_max_size)
 * [`proxy_http_version`](#-nginx--proxy_http_version)
 * [`proxy_read_timeout`](#-nginx--proxy_read_timeout)
 * [`proxy_redirect`](#-nginx--proxy_redirect)
@@ -252,6 +253,8 @@ The following parameters are available in the `nginx` class:
 * [`nginx_upstreams`](#-nginx--nginx_upstreams)
 * [`nginx_upstreams_defaults`](#-nginx--nginx_upstreams_defaults)
 * [`purge_passenger_repo`](#-nginx--purge_passenger_repo)
+* [`variables_hash_bucket_size`](#-nginx--variables_hash_bucket_size)
+* [`variables_hash_max_size`](#-nginx--variables_hash_max_size)
 
 ##### <a name="-nginx--include_modules_enabled"></a>`include_modules_enabled`
 
@@ -1112,6 +1115,14 @@ Data type: `Integer`
 
 Default value: `64`
 
+##### <a name="-nginx--proxy_headers_hash_max_size"></a>`proxy_headers_hash_max_size`
+
+Data type: `Optional[Integer]`
+
+
+
+Default value: `undef`
+
 ##### <a name="-nginx--proxy_http_version"></a>`proxy_http_version`
 
 Data type: `Optional[String]`
@@ -1690,6 +1701,22 @@ Data type: `Boolean`
 
 
 Default value: `true`
+
+##### <a name="-nginx--variables_hash_bucket_size"></a>`variables_hash_bucket_size`
+
+Data type: `Optional[Integer]`
+
+
+
+Default value: `undef`
+
+##### <a name="-nginx--variables_hash_max_size"></a>`variables_hash_max_size`
+
+Data type: `Optional[Integer]`
+
+
+
+Default value: `undef`
 
 ## Defined types
 

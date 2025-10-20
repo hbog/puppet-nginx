@@ -102,6 +102,7 @@ class nginx::config {
   $proxy_use_temp_path            = $nginx::proxy_use_temp_path
   $proxy_connect_timeout          = $nginx::proxy_connect_timeout
   $proxy_headers_hash_bucket_size = $nginx::proxy_headers_hash_bucket_size
+  $proxy_headers_hash_max_size    = $nginx::proxy_headers_hash_max_size
   $proxy_http_version             = $nginx::proxy_http_version
   $proxy_max_temp_file_size       = $nginx::proxy_max_temp_file_size
   $proxy_read_timeout             = $nginx::proxy_read_timeout
@@ -139,6 +140,8 @@ class nginx::config {
   $worker_rlimit_nofile           = $nginx::worker_rlimit_nofile
   $pcre_jit                       = $nginx::pcre_jit
   $include_modules_enabled        = $nginx::include_modules_enabled
+  $variables_hash_bucket_size     = $nginx::variables_hash_bucket_size
+  $variables_hash_max_size        = $nginx::variables_hash_max_size
 
   # Non-configurable settings
   $conf_template                  = 'nginx/conf.d/nginx.conf.erb'
