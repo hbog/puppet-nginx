@@ -1463,6 +1463,18 @@ describe 'nginx::resource::server' do
             it { is_expected.not_to contain_file('/etc/nginx/bogusparams') }
           end
 
+          context 'when uwsgi_param has custom params' do
+            let :params do
+              default_params.merge(
+                uwsgi_param: {
+                  'X-Custom-Param': 'Someting',
+                }
+              )
+            end
+
+            it { is_expected.to contain_nginx__resource__location("#{title}-default").with_uwsgi_param('X-Custom-Param' => 'Someting') }
+          end
+
           context 'when listen_port == ssl_port but ssl = false' do
             let :params do
               default_params.merge(listen_port: 80,
