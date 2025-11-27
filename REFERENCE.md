@@ -3345,6 +3345,7 @@ The following parameters are available in the `nginx::resource::server` defined 
 * [`fastcgi_params`](#-nginx--resource--server--fastcgi_params)
 * [`fastcgi_index`](#-nginx--resource--server--fastcgi_index)
 * [`fastcgi_script`](#-nginx--resource--server--fastcgi_script)
+* [`uwsgi_param`](#-nginx--resource--server--uwsgi_param)
 * [`uwsgi_read_timeout`](#-nginx--resource--server--uwsgi_read_timeout)
 * [`ssl`](#-nginx--resource--server--ssl)
 * [`ssl_cert`](#-nginx--resource--server--ssl_cert)
@@ -3737,6 +3738,14 @@ Default value: `undef`
 Data type: `Optional[String]`
 
 optional SCRIPT_FILE parameter
+
+Default value: `undef`
+
+##### <a name="-nginx--resource--server--uwsgi_param"></a>`uwsgi_param`
+
+Data type: `Optional[Hash]`
+
+Set additional custom uwsgi parameters (uwsgi_param in nginx) in the default vhost.
 
 Default value: `undef`
 
