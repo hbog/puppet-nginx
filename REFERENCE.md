@@ -5313,7 +5313,7 @@ Alias of `Enum['nginx', 'nginx-stable', 'nginx-mainline', 'passenger']`
 
 Type Alias for Nginx::Size
 
-Alias of `Variant[Integer[0], Pattern[/\A\d+[k|K|m|M]?\z/]]`
+Alias of `Variant[Integer[0], Pattern[/\A\d+[kKmMgG]?\z/]]`
 
 ### <a name="Nginx--StringMappings"></a>`Nginx::StringMappings`
 
